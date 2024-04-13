@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:8.0  # Adjust the version if needed (e.g., mysql:5.7)
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: S4ngat  # Replace with a strong password
+      MYSQL_DATABASE: mydb
+    volumes:
+      - mysql-data:/var/lib/mysql  # Persistent storage for data
+    ports:
+      - "3306:3306"  # Expose port 3306 (default MySQL port)
+volumes:
+  mysql-data: {}

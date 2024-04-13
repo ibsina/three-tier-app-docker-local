@@ -1,0 +1,25 @@
+version: v1
+
+id:
+  org: 1c2ff286-014e-48f9-97bd-9b39dc05f699
+  app: 06bc6ef4-f2e1-4bc0-9464-957a6d591a2a
+
+scanners:
+  - sast
+  - secret
+  - sca
+  - iac
+  - dast
+
+languages:
+  - python
+
+dast:
+  url: https://fsi.fortiseahk.com/
+  full_scan: false #true|false
+
+resource:
+  serial_scan: false #true|false
+
+fail_pipeline:
+  risk_rating: 8
