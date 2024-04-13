@@ -10,8 +10,8 @@ here=""
 def form():
     return render_template('index.html')
 
-@app.route('/login')
-@app.route('/login/')
+@app.route('/login', methods=['GET','POST'])
+@app.route('/login/', methods=['GET','POST'])
 def login():
     return render_template('login.html')
 
@@ -25,7 +25,7 @@ def registration():
 def addrec():
 	if request.method == 'POST':
 		here=request.form
-		response = requests.post('http://localhost:5000/registration', json=dict(here))
+		response = requests.post('http://localhost:5000/registration',json=dict(here))
 
 	if response.status_code == 200:
 		return render_template('thanks.html')
@@ -37,7 +37,7 @@ def addrec():
 def chkrec():
 	if request.method == 'POST':
 		here=request.form
-		response = requests.post('http://localhost:5000/login', json=dict(here))
+		response = requests.post('http://localhost:5000/login',json=dict(here))
 
 	if response.status_code == 200:
 		response_dict = json.loads(response.text)
