@@ -25,8 +25,7 @@ def registration():
 def addrec():
 	if request.method == 'POST':
 		here=request.form
-		Headers = { 'FSI_APIKEY' : '37JFybUZjpojWEa9GzCM536RGkw56RutMPYu8Vj8' }
-		response = requests.post('http://seahk-is-fwb-internal-5cf4808a9027dc93.elb.ap-southeast-1.amazonaws.com/registration',headers = Headers, json=dict(here))
+		response = requests.post('http://localhost:5000/registration', json=dict(here))
 
 	if response.status_code == 200:
 		return render_template('thanks.html')
@@ -38,8 +37,7 @@ def addrec():
 def chkrec():
 	if request.method == 'POST':
 		here=request.form
-		Headers = { 'FSI_APIKEY' : '37JFybUZjpojWEa9GzCM536RGkw56RutMPYu8Vj8' }
-		response = requests.post('http://seahk-is-fwb-internal-5cf4808a9027dc93.elb.ap-southeast-1.amazonaws.com/login',headers = Headers, json=dict(here))
+		response = requests.post('http://localhost:5000/login', json=dict(here))
 
 	if response.status_code == 200:
 		response_dict = json.loads(response.text)
